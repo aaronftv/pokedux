@@ -1,23 +1,27 @@
-import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useEffect } from 'react';
 import { Col } from 'antd';
+import { useDispatch, useSelector } from 'react-redux'
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
 import logo from './statics/logo.svg';
 import { getPokemon } from './api';
-import { setPokemons as setPokemonsAction } from './actions';
+import { setPokemons } from './actions';
 import './App.css';
 
-function App({pokemons, setPokemons}) {
-  console.log("🚀 ~ file: App.js:12 ~ App ~ pokemons:", pokemons);
+function App() {
+
   //const [pokemons, setPokemons] = useState([]);
+
+  const pokemons = useSelector(state => state.pokemons);
+  const dispatcher = useDispatch();
+
   useEffect(()=> {
     const fetchPokemons = async () => {
       const pokemonsRes = await getPokemon();
-      setPokemons(pokemonsRes);
+      dispatcher(setPokemons(pokemonsRes));
     };
+
     fetchPokemons();
-    //fetchPokemons(pokemons);
   },[]);
 
   return (
@@ -33,14 +37,5 @@ function App({pokemons, setPokemons}) {
   );
 }
 
-//These 2 vars below are required to connect our component to Redux, names are by convention
-const mapStateToProps = (state) => ({
-  pokemons: state.pokemons,
-});
-
-const mapDispatchToPros = (dispatch) => ({
-  setPokemons: (value) => dispatch(setPokemonsAction(value))
-});
-
 //This below is also required for Redux integration
-export default connect(mapStateToProps, mapDispatchToPros)(App);
+export default App;
