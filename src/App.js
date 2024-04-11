@@ -5,7 +5,7 @@ import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
 import logo from './statics/logo.svg';
 import { getPokemon } from './api';
-import { setPokemons } from './actions';
+import { getPokemonWithDetails } from './actions';
 import './App.css';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   useEffect(()=> {
     const fetchPokemons = async () => {
       const pokemonsRes = await getPokemon();
-      dispatcher(setPokemons(pokemonsRes));
+      dispatcher(getPokemonWithDetails(pokemonsRes));
     };
 
     fetchPokemons();
@@ -37,5 +37,4 @@ function App() {
   );
 }
 
-//This below is also required for Redux integration
 export default App;
