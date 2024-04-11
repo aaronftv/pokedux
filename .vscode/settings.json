@@ -1,0 +1,4 @@
+{
+    "turboConsoleLog.includeFileNameAndLineNum": true,
+    "turboConsoleLog.addSemicolonInTheEnd": true
+}
