@@ -9,18 +9,14 @@ import { getPokemonWithDetails, setLoading } from './actions';
 import './App.css';
 
 function App() {
-  //const [pokemons, setPokemons] = useState([]);
-
-  const pokemons = useSelector(state => state.pokemons);
-  const loading = useSelector(state => state.loading);
+  const pokemons = useSelector(state => state.get('pokemons')).toJS();
+  const loading = useSelector(state => state.get('loading'));
   const dispatcher = useDispatch();
 
   useEffect(()=> {
     const fetchPokemons = async () => {
-      dispatcher(setLoading(true));
       const pokemonsRes = await getPokemon();
       dispatcher(getPokemonWithDetails(pokemonsRes));
-      dispatcher(setLoading(false));
     };
 
     fetchPokemons();

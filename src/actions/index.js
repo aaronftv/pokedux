@@ -18,9 +18,10 @@ export const setFavorite = (payload) => ({
 });
 
 export const getPokemonWithDetails = (pokemons = []) => async (dispatcher) => {
+  dispatcher(setLoading(true));
   const pokemonDetailed = await Promise.all(
     pokemons.map((pokemon) => getPokemonDetails(pokemon))
   );
-
   dispatcher(setPokemons(pokemonDetailed));
+  dispatcher(setLoading(false));
 };
