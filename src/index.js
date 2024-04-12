@@ -16,13 +16,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const composedEnhances = composeAlt(
+const composedEnhancers = composeAlt(
   applyMiddleware(thunk, logger)//, prefix)
 );
 
 const store = createStore(
   pokemonsReducer,
-  composedEnhances
+  composedEnhancers
 );
 
 root.render(
