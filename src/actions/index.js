@@ -12,6 +12,7 @@ export const setLoading = (payload) => ({
   payload,
 });
 
+
 export const setFavorite = (payload) => ({
   type: SET_FAVORITE,
   payload,
@@ -19,6 +20,7 @@ export const setFavorite = (payload) => ({
 
 export const getPokemonWithDetails = (pokemons = []) => async (dispatcher) => {
   dispatcher(setLoading(true));
+  
   const pokemonDetailed = await Promise.all(
     pokemons.map((pokemon) => getPokemonDetails(pokemon))
   );
