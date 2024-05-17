@@ -12,6 +12,7 @@ function App() {
   //const [pokemons, setPokemons] = useState([]);
 
   //const pokemons = useSelector(state => state.pokemons);
+  //shallowEqual is used to avoid making a strict comparison and compare if values changed instead
   const pokemons = useSelector(state => state.getIn(['data','pokemons'], shallowEqual)).toJS();
 
   //const loading = useSelector(state => state.loading);
