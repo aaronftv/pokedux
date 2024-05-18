@@ -10,7 +10,7 @@ import './App.css';
 function App() {
   //const [pokemons, setPokemons] = useState([]);
   //shallowEqual is used to avoid making a strict comparison and compare if values changed instead
-  const pokemons = useSelector(state => state.data.pokemons, shallowEqual);
+  const pokemons = useSelector(state => state.data.pokemonsFiltered, shallowEqual);
   const loading = useSelector(state => state.ui.loading);
 
   const dispatcher = useDispatch();
