@@ -4,29 +4,19 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
 import logo from './statics/logo.svg';
-import { getPokemon } from './api';
-import { getPokemonWithDetails, setLoading } from './actions';
+import { fetchPokemonsWithDetails } from './features/dataSlice';
 import './App.css';
 
 function App() {
   //const [pokemons, setPokemons] = useState([]);
-
-  //const pokemons = useSelector(state => state.pokemons);
   //shallowEqual is used to avoid making a strict comparison and compare if values changed instead
-  const pokemons = useSelector(state => state.getIn(['data','pokemons'], shallowEqual)).toJS();
-
-  //const loading = useSelector(state => state.loading);
-  const loading = useSelector(state => state.getIn(['ui','loading']));
+  const pokemons = useSelector(state => state.data.pokemons, shallowEqual);
+  const loading = useSelector(state => state.ui.loading);
 
   const dispatcher = useDispatch();
 
   useEffect(()=> {
-    const fetchPokemons = async () => {
-      const pokemonsRes = await getPokemon();
-      dispatcher(getPokemonWithDetails(pokemonsRes));
-    };
-
-    fetchPokemons();
+    dispatcher(fetchPokemonsWithDetails());
   },[]);
 
   return (
