@@ -12,7 +12,6 @@ export const setLoading = (payload) => ({
   payload,
 });
 
-
 export const setFavorite = (payload) => ({
   type: SET_FAVORITE,
   payload,
