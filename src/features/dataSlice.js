@@ -49,7 +49,7 @@ export const dataSlice = createSlice({
         },
         setFilter: (state, action) => {
             const pokemonsFiltered = state.pokemons.filter(
-                pokemon => pokemon.name.includes(action.payload)
+                pokemon => pokemon.name.includes(action.payload.toLowerCase())
             );
             state.pokemonsFiltered = pokemonsFiltered;
         }

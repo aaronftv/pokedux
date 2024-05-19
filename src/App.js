@@ -21,14 +21,14 @@ function App() {
 
   return (
     <div className="App">
-      <Col span={4} offset={10}>
+      <Col span={16} offset={4} align={'center'}>
         <img src={logo} alt="Pokedux" />
       </Col>
-      <Col span={8} offset={8}>
+      <Col span={16} offset={4}>
         <Searcher />
       </Col>
       {loading ? (
-        <Col offset={12}>
+        <Col offset={12} style={{ marginTop: '3em' }}>
           <Spin spinning size="large" />
         </Col>
       ) : (

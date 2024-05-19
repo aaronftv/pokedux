@@ -1,7 +1,12 @@
+body {
+  background-color: #d7d4ce;
+}
+
 .App {
   margin-top: 3rem;
 }
 
 .App > div > img {
   margin-bottom: 3rem;
+  max-width: 300px;
 }

@@ -11,7 +11,7 @@ const Searcher = () => {
       <Input.Search 
       placeholder="Search..." 
       onChange={handleOnChange}
-      style={{ marginBottom: 12 }} />
+      style={{ marginBottom: 12, width: '100%'}} />
     );
 };
 
